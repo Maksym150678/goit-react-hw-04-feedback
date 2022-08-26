@@ -1,0 +1,12 @@
+.goodText,
+.neutralText,
+.badText,
+.totalText,
+.positivePercentageText {
+    font-family: serif;
+    color: black;
+    display: block;
+    font-size: 1.8em;
+    margin: 0;
+    margin-bottom: 5px;
+}

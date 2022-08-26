@@ -1,0 +1,27 @@
+.title {
+    font-family: serif;
+    font-weight: normal;
+    position: relative;
+    color: black;
+    font-size: 2.3em;
+    display: inline-block;
+    margin: 0;
+    line-height: 1;
+    padding: 8px 20px 8px 2px;
+    border-top: 2px solid;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+
+.statisticsTitle {
+    font-family: serif;
+    font-weight: normal;
+    position: relative;
+    font-size: 2em;
+    display: inline-block;
+    margin: 0;
+    line-height: 1;
+    padding: 8px 20px 8px 2px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
