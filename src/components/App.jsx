@@ -3,16 +3,15 @@ import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
 import Notification from './Notification/Notification';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
+import { useState } from 'react';
 
-class App extends React.Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+function App() {
+    const [good, setGood] = useState(0);
+    const [neutral, setNeutral] = useState(0);
+    const [bad, setBad] = useState(0);
+  
 
-  countPositiveFeedbackPercentage = () => {
-    const { good, neutral, bad } = this.state;
+  const countPositiveFeedbackPercentage = () => {
     const PositivePercentage = Math.round(
       (good / (good + neutral + bad)) * 100
     );
@@ -20,37 +19,41 @@ class App extends React.Component {
     return PositivePercentage;
   };
 
-  countTotalFeedback = () => {
-    const { good, bad, neutral } = this.state;
+  const countTotalFeedback = () => {
     const total = good + bad + neutral;
     return total;
   };
 
-  show = () => {
-    this.visible = true;
-  };
-
-  increment = event => {
+  const increment = event => {
     const { name } = event.target;
-    this.setState(prevState => ({
-      [name]: prevState[name] + 1,
-    }));
+    switch (name) {
+      case 'good':
+        setGood(prevState => prevState + 1);
+        break;
+      case 'bad':
+        setBad(prevState => prevState + 1);
+        break;
+      case 'neutral':
+        setNeutral(prevState => prevState + 1);
+        break;
+      default:
+        return;
+    }
   };
-
-  render() {
-    const { good, neutral, bad } = this.state;
     const total = good + neutral + bad;
     return (
       <div>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            setFeedback={this.increment}
-            options={Object.keys(this.state)}
+            setFeedback={increment}
+            good={good}
+            neutral={neutral}
+            bad={bad}
           />
           {total > 0 ? (
             <Statistics
-              setTotal={this.countTotalFeedback}
-              setPercentage={this.countPositiveFeedbackPercentage}
+              setTotal={countTotalFeedback}
+              setPercentage={countPositiveFeedbackPercentage}
               good={good}
               neutral={neutral}
               bad={bad}
@@ -62,5 +65,5 @@ class App extends React.Component {
       </div>
     );
   }
-}
+
 export default App;

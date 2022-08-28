@@ -7,8 +7,16 @@ const classNames = {
   neutral: style.neutral,
   bad: style.bad,
 };
-const FeedbackOptions = ({ setFeedback, options }) => {
-  const buttons = options.map(item => (
+
+const FeedbackOptions = ({ setFeedback, good, bad, neutral }) => {
+  const object = {
+    good: good,
+    neutral: neutral,
+    bad: bad,
+  };
+
+const arrayButtons = Object.keys(object);
+  const buttons = arrayButtons.map(item => (
     <button
       key={nanoid()}
       type="button"
