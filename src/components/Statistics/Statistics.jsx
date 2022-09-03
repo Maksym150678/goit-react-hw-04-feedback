@@ -9,7 +9,7 @@ const Statistics = ({ good, neutral, bad, setTotal, setPercentage }) => {
             <span className={style.neutralText}>Neutral: {neutral}</span>
             <span className={style.badText}>Bad: {bad}</span>
             <span className={style.totalText}>Total: {setTotal}</span>
-            <span className={style.positivePercentageText}>Positive feedback: {setPercentage}% </span>
+            <span className={style.positivePercentageText}>Positive feedback: {setPercentage()}% </span>
         </div>
     );
 };
